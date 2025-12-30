@@ -1,29 +1,25 @@
-# AI Code Translator
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
-Use AI to translate code from one language to another.
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance;
+    public int score = 0;
 
-![AI Code Translator](./public/screenshot.png)
+    void Awake()
+    {
+        instance = this;
+    }
 
-## Running Locally
+    public void AddScore(int value)
+    {
+        score += value;
+        Debug.Log("Score: " + score);
+    }
 
-**1. Clone Repo**
-
-```bash
-git clone https://github.com/mckaywrigley/ai-code-translator.git
-```
-
-**2. Install Dependencies**
-
-```bash
-npm i
-```
-
-**3. Run App**
-
-```bash
-npm run dev
-```
-
-## Contact
-
-If you have any questions, feel free to reach out to me on [Twitter](https://twitter.com/mckaywrigley).
+    public void GameOver()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
